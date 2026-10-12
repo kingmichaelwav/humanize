@@ -1,22 +1,36 @@
-# My humanize skill (forked from harshaneel/humanize)
+# My humanize skills (fork of harshaneel/humanize)
 
 This is my personal copy. I own it and can edit it freely.
 
-## Update MY knowledge (my own edits) — takes effect instantly
-Edit any file, e.g.:
-  humanize/SKILL.md              <- the humanize rules
-  humanize/references/research.md<- the research notes
-  ai-check/SKILL.md              <- the detector/scoring rules
-The skills are symlinked into ~/.claude/skills, so edits are live on the next skill run.
-(Optional) save a snapshot:  git add -A && git commit -m "my tweak"
+## What's in here
 
-## Pull harshaneel's latest knowledge — only when I want it
-  cd ~/humanize
-  git fetch upstream
-  git merge upstream/main      # or: git pull upstream main
-Review first if you like:  git log upstream/main --oneline -20
+    humanizer/                          <- MY main skill (the one Claude uses as "humanizer")
+                                           blader/humanizer 3.1.0 + harshaneel's rules, merged 2026-10-12
+    plugins/humanize/skills/ai-check/   <- the "does this sound AI?" scorer (used as "ai-check")
+    plugins/humanize/skills/humanize/   <- harshaneel's original humanize skill, untouched (reference)
 
-## Make it a GitHub fork later (optional)
-Fork on github.com, then:
-  git remote add origin https://github.com/<you>/humanize.git
-  git push -u origin main
+On my Windows PC, `~/.claude/skills/humanizer` and `~/.claude/skills/ai-check` are
+junctions (folder links) pointing into this repo at `C:\Users\KING\humanize`, so edits
+here are live on the next skill run. Old pre-merge copy: `~/.claude/skill-backups/`.
+
+## Save my own edits to GitHub
+
+    cd ~/humanize
+    git add -A && git commit -m "my tweak" && git push
+
+## Pull harshaneel's latest (only when I want it)
+
+    git fetch upstream
+    git log main..upstream/main --oneline     # see what's new first
+    git merge upstream/main
+    git push
+
+His changes land in `plugins/` and won't touch `humanizer/`. If he improves his
+humanize rules, port the good parts into `humanizer/SKILL.md` by hand.
+
+## Pull blader's latest (the base of humanizer/)
+
+blader/humanizer is not a git remote here. Download its SKILL.md, compare it with
+`humanizer/SKILL.md`, and keep my additions: the "Final gate" section, section G
+(§27 to §32), "Fitting the register", and "Writing new text". Notes on what came
+from where are in `humanizer/README.md`.

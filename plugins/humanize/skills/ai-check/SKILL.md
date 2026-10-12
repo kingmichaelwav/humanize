@@ -13,6 +13,8 @@ Forensic analysis of text for AI-generation signals. Grounded in the published d
 literature (Wu et al. 2025, Mitchell et al. 2023, Kujur 2025, AAAI 2025 shared task).
 
 The output is a structured report, not a vague judgment. Every fired signal cites evidence.
+To fix the text after grading it, use the `humanizer` skill. Source: harshaneel/humanize (MIT),
+installed 2026-10-12.
 
 ---
 
